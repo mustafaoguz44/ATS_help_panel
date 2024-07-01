@@ -1,0 +1,84 @@
+<!-- HELP PANEL-->
+<div id="container-floating">
+
+    <a data-target="#gorusOneriModal" data-toggle="modal">
+        <div class="nd3 nds" data-toggle="popover" data-trigger="hover" data-html="true"
+             title="Görüş ve Öneri / Hata Bildirimi" data-content="Görüş ve Önerileriniz çok değerli. Lütfen mesaj göndermek için tıklayın. Hata alıyorsanızda buradan bildirebilirsiniz.">
+            <p class="letter">
+                <i class="fa-solid fa-reply-all"></i>
+            </p>
+        </div>
+    </a>
+
+    <a href="@Url.Action("Index","Yardim",new {Area=""})" target="_blank">
+        <div class="nd1 nds" data-toggle="popover" data-trigger="hover" data-html="true"
+             title="Yardım" data-content="Yardım dökümanına gitmek için tıklayın.">
+
+            <p class="letter">
+                <i class="fa-solid fa-circle-question"></i>
+            </p>
+        </div>
+    </a>
+
+    <div id="floating-button" data-toggle="popover" data-trigger="hover" data-html="true"
+         title="Yardım" data-content="Yardım dökümantasyonuna ulaşabilir ya da site ile ilgili Görüş ve Önerilerinizi gönderebilirsiniz.">
+        <p class="plus">
+            <i class="fa-solid fa-question"></i>
+        </p>
+        <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png" />
+    </div>
+</div>
+<!-- partial -->
+
+<div class="modal fade show" id="gorusOneriModal" tabindex="-1" role="dialog" aria-labelledby="gorusOneriModalLabel" aria-modal="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gorusOneriModalLabel">Görüş ve Öneri Formu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <form action="@Url.Action("HelpPanel","Genel",new {Area="ATS"})" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="card-blue">
+                    <div class="card-body">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Konu : <span class="text-red">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-list"></i></span>
+                                    </div>
+                                    <select class="form-control" id="Konu" name="Konu" required="">
+                                        <option value="Görüş ve Öneri" selected>Görüş ve Öneri</option>
+                                        <option value="Hata Alıyorum">Hata Alıyorum</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mesajınız : <span class="text-red">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-font"></i></span>
+                                    </div>
+                                    <textarea class="form-control" id="Mesaj" name="Mesaj" placeholder="Buraya mesajınızı yazabilirsiniz..." rows="5" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">Kapat</a>
+                    <span data-toggle="popover" data-trigger="hover" data-html="true" data-title="Gönder" data-content="Görüş ve Önerizini göndermek için tıklayın" data-original-title="" title="">
+                        <button type="submit" class="btn btn-success">Gönder</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
